@@ -1,0 +1,25 @@
+{% extends 'quiz/dependencies.html' %} {% block content %}
+
+<div class="container">
+  <div class="card-columns" style="padding: 10px; margin: 20px">
+    <div
+      align="center"
+      class="card"
+      style="width: 32rem; border: 5px #000 solid"
+    >
+      <h2>Resultados</h2>
+      <div class="card-body">
+        <h5 class="card-title">Pontos: {{pontos}}</h5>
+
+        <p class="card-text">Percentagem: {{percentagem}}%</p>
+        <p class="card-text">Tempo gasto: {{tempo}} segundos</p>
+        <p class="card-text">Respostas corretas: {{correto}}</p>
+        <p class="card-text">Respostas incorretas: {{errado}}</p>
+        <p class="card-text">Total de perguntas: {{total}}</p>
+        <h5>Tudo de bom para o próximo quiz!</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

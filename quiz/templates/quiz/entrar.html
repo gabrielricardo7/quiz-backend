@@ -1,0 +1,21 @@
+{% extends 'quiz/dependencies.html' %}
+{% load static%}
+{% block content %}
+<div class="container jumbotron">
+  <form method="POST" action="">
+    {% csrf_token %}
+    <p>
+      <input type="text" name="username" placeholder="Nome de usuário…" />
+    </p>
+    <p>
+      <input
+        type="password"
+        name="password"
+        placeholder="Senha…"
+      />
+    </p>
+    <input class="btn btn-success" type="submit" value="Entrar" />
+    <p>Não tem uma conta?<br /><a href='{% url 'registro' %}'>Registrar</a></p>
+  </form>
+</div>
+{% endblock %}

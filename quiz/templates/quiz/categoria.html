@@ -1,0 +1,78 @@
+{% extends 'quiz/dependencies.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+  <h1>Boa sorte!</h1>
+
+  <div align="right " id="displaytimer">
+    <b>Cronômetro: 0 segundos</b>
+  </div>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    {% for p in perguntas%}
+    <div class="form-group">
+      <label for="pergunta">{{p.pergunta}}</label>
+    </div>
+    <div class="form-check">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="{{p.pergunta}}"
+          id="gridRadios1"
+          value="escolha1"
+          checked
+        />
+        <label class="form-check-label" for="gridRadios1">
+          {{p.escolha1}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="{{p.pergunta}}"
+          id="gridRadios2"
+          value="escolha2"
+        />
+        <label class="form-check-label" for="gridRadios2">
+          {{p.escolha2}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="{{p.pergunta}}"
+          id="gridRadios1"
+          value="escolha3"
+        />
+        <label class="form-check-label" for="gridRadios1">
+          {{p.escolha3}}
+        </label>
+      </div>
+      <br />
+    </div>
+    {% endfor %}
+    <input id="timer" type="hidden" name="timer" value="" />
+    <br />
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+  {% block script %}
+  <script>
+    console.log("Olá Mundo");
+    const timer = document.getElementById("displaytimer");
+    console.log(timer.textContent);
+    const inputtag = document.getElementById("timer");
+
+    t = 0;
+    setInterval(() => {
+      t += 1;
+      timer.innerHTML = "<b>Cronômetro: " + t + " segundos</b>";
+      inputtag.value = t;
+    }, 1000);
+  </script>
+  {% endblock script %}
+</div>
+{% endblock %}

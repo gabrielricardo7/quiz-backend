@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+  <head>
+    <title>Quiz Django API</title>
+    <link rel="stylesheet" href="{% static 'quiz/css/bootstrap.min.css' %}" />
+  </head>
+  <body>
+    {% include 'quiz/navbar.html' %}
+    {% block content %}
+    {% endblock %}
+    <br />
+
+    <script src="{% static 'quiz/js/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'quiz/js/popper.min.js' %}"></script>
+    <script src="{% static 'quiz/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

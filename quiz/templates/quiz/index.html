@@ -1,0 +1,33 @@
+{% extends 'quiz/dependencies.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+  .lista {
+    list-style: square;
+  }
+  .item {
+    font-size: 24px;
+  }
+</style>
+
+<div class="container">
+  <h1>Bem-vindo(a) ao Quiz</h1>
+  <h2>Escolha uma categoria para iniciar:</h2>
+
+  {% if lista_de_categorias %}
+  <ul class="lista">
+    {% for c in lista_de_categorias %}
+    <li class="item">
+      <a href="{% url 'categoria' c.id %}"
+        >{{ c.categoria }}</a
+      >
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>Nenhum quiz está disponível.</p>
+  {% endif %}  
+
+</div>
+{% endblock %}
