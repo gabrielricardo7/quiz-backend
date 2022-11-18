@@ -1,80 +1,66 @@
-## <img src="https://valora.cc/img/logo2.png" alt="Valora" width="24" /> Desafio Backend Python
+## Quiz Django API
 
-Parabéns! Se você chegou até aqui significa que você passou pelas etapas mais difíceis do nosso processo seletivo. Somos extremamente criteriosos com as pessoas que vão integrar nosso time porque só aceitamos pessoas incríveis!
+API de uma aplicação para a criação de um quiz de perguntas e respostas
 
-Agora é a parte fácil. Chegou a hora de mostrar todas as suas habilidades de transformar café em código. Vamos lá?
+Tecnologias utilizadas:
 
-Nesse desafio iremos avaliar suas habilidades em:
-
-* **Python**
+* **Python (3.9.6 ou acima)**
 * **Django**
 * **Django REST Framework**
-* **Pytest** (desejável mas não obrigatório)
-* **Docker** (desejável mas não obrigatório)
 
 Você irá desenvolver a API de uma aplicação para a criação de um quiz de perguntas e respostas!
 
-**A aplicação deverá prover o registro e autenticação de dois tipos de usuários**:
+**A aplicação provê o registro e autenticação de dois tipos de usuários**:
 
 * Admin
 * Player
 
 **Cada quiz é composto por**:
 
-* 10 perguntas com 3 respostas onde apenas 1 é correta.
-* Cada resposta correta acumula a 1 ponto.
+* Perguntas com 3 respostas onde apenas 1 é correta.
+* Cada resposta correta acumula 1 ponto.
 * Cada resposta errada perde 1 ponto. A menor pontuação possível é 0.
-* Possui uma categoria.
+* Uma categoria.
 
 **Ao iniciar o jogo**:
 
-* O player deve escolher uma categoria válida e receber um quiz com perguntas aleatórias referentes a categoria escolhida.
+* O player deve se registrar, escolher uma categoria válida e receber um quiz com perguntas referentes a categoria escolhida.
 
 **Ao finalizar o jogo**:
 
-* O player deve receber a contabilização dos seus pontos juntamente com a sua posição atual no ranking global. Não há limitação de quantos quizzes o player pode responder.
-
-**O ranking**:
-
-* É a contabilização dos pontos acumulados por cada player.
-* Ranking geral considera todas as categorias.
-* Ranking por categoria agrupa por categorias.
-* Este requisito é desejável mas não obrigatório.
+* O player recebe a contabilização dos seus pontos. Não há limitação de quantos quizzes o player pode responder.
 
 **Permissões**:
 
-* Todos os endpoints devem estar protegidos por autenticação.
+* Os endpoints estão protegidos por autenticação.
 * Usuários do tipo **Admin** tem permissão para criar perguntas e respostas para os quizzes.
-* Usuários do tipo **Player** tem permissão para jogar e consultar o ranking.
+* Usuários do tipo **Player** tem permissão para jogar.
 
-## Requisitos
+**Para rodar a API devemos executar os seguintes comandos**:
 
-* O projeto precisa estar configurado para rodar em um ambiente macOS ou Ubuntu (preferencialmente como container Docker).
-* Deve anexar ao seu projeto uma coleção do postman com todos os endpoints criados e exemplos de utilização.
+* git clone https://github.com/gabrielricardo7/quiz-backend.git
+* cd quiz-backend/ && python3 -m venv venv
+* . venv/bin/activate && pip install -r requirements.txt
+* ./manage.py runserver
 
-**Para executar seu código devemos executar apenas os seguintes comandos**:
+## URL_BASE: 
 
-* git clone $seu-fork
-* cd $seu-fork
-* comando para instalar dependências
-* comando para executar a aplicação
+http://localhost
 
-## Critério de avaliação
+## Endpoints
 
-* **Organização do código**: Separação de módulos, view e model
-* **Clareza**: O README explica de forma resumida qual é o problema e como pode rodar a aplicação?
-* **Assertividade**: A aplicação está fazendo o que é esperado? Se tem algo faltando, o README explica o porquê?
-* **Legibilidade do código** (incluindo comentários)
-* **Segurança**: Existe alguma vulnerabilidade clara?
-* **Cobertura de testes** (Não esperamos cobertura completa mas é importante garantir o fluxo principal)
-* **Histórico de commits** (estrutura e qualidade)
-* **UX**: A API é intuitiva?
-* **Escolhas técnicas**: A escolha das bibliotecas, banco de dados, arquitetura, etc, é a melhor escolha para a aplicação?
+* **/**: *Index* - Página principal (Quiz)
+* **/admin**: Página de acesso do Administrador, que pode criar novos quizzes com uma categoria
+* **/entrar**: Página de *login* - entrada do usuário ou admin 
+* **/nova_pergunta**: Página para adicionar nova pergunta ao quiz (Somente admins)
+* **/registro**: Página de registro de usuário (Player/Jogador)
+* **/resultado** Página de resultados - Exibida quando se termina de responder o Quiz
 
-## Dúvidas
+## Instruções
 
-Quaisquer dúvidas que você venha a ter, consulte as issues para ver se alguém já não a fez e caso você não ache sua resposta, abra você mesmo uma nova issue!
+Quando estiver rodando a aplicação, acesse a *URL_BASE* (http://localhost), registre uma conta de usuário, entre com sua senha e escolha uma categoria da lista de quizzes.
 
-Ao completar o desafio, submeta um pull-request a esse repositório com uma breve explicação das decisões tomadas e principalmente as instruções para execução do projeto.
+## OBS (Admin padrão):
 
-**Boa sorte! ;)**
+* **usuário**: admin
+* **senha**: admin
